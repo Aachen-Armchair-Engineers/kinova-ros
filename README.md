@@ -1,3 +1,12 @@
+
+# Changes in this Fork:
+- Ported to noetic (untested)
+
+Planned:
+- Replace the backend functionality with that of [libkindrv](https://github.com/fawkesrobotics/libkindrv) or a fork of it
+- Port to ROS2
+
+=======
 # Table of Contents 
 - [Important](#important) 
 - [Kinova-ROS](#kinova-ros)
