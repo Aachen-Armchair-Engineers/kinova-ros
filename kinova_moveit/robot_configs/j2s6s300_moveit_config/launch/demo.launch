@@ -28,7 +28,12 @@
 
   <!-- We do not have a robot connected, so publish fake joint states -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <!--
+      This parameter is not supported anymore
+      If a gui should be necessary see the following:
+      http://wiki.ros.org/noetic/Migration#Joint_State_Publisher_GUI
     <param name="use_gui" value="$(arg use_gui)"/>
+    -->
     <rosparam param="source_list">[move_group/fake_controller_joint_states]</rosparam>
   </node>
 
