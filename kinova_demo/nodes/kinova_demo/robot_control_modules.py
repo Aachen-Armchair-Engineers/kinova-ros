@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 """A set of example functions that can be used to control the arm"""
 import rospy
 import actionlib
@@ -101,7 +101,7 @@ def homeRobot(prefix):
            home()
            return None
         except rospy.ServiceException, e:
-           print "Service call failed: %s"%e
+           print ("Service call failed: %s"%e)
 
 
 def activateNullSpaceMode(duration_sec, prefix):
@@ -111,13 +111,13 @@ def activateNullSpaceMode(duration_sec, prefix):
            SetNullSpaceMode = rospy.ServiceProxy(service_address, SetNullSpaceModeState)
            SetNullSpaceMode(1)           
         except rospy.ServiceException, e:
-           print "Service call failed: %s"%e
+           print ("Service call failed: %s"%e)
 	rospy.sleep(duration_sec)
 	try:           
            SetNullSpaceMode(0)
            return None
         except rospy.ServiceException, e:
-           print "Service call failed: %s"%e
+           print ("Service call failed: %s"%e)
 
 
 def publishVelCmd(jointCmds, duration_sec, prefix):
@@ -151,7 +151,7 @@ def publishVelCmd(jointCmds, duration_sec, prefix):
     if L:            
       break
   sub.unregister()
-  print "max error %f %f %f %f %f %f %f" %(max_error[0], max_error[1], max_error[2], max_error[3], max_error[4], max_error[5], max_error[6])
+  print ("max error %f %f %f %f %f %f %f" %(max_error[0], max_error[1], max_error[2], max_error[3], max_error[4], max_error[5], max_error[6]))
 
 
 def publishCatesianVelocityCommands(cartVel, duration_sec, prefix):
@@ -182,7 +182,7 @@ def publishForceCmd(force_cmds, duration_sec, prefix):
 		setTorqueParameters = rospy.ServiceProxy(service_address, SetTorqueControlParameters)
 		setTorqueParameters()           
 	except rospy.ServiceException, e:
-		print "Service call failed: %s"%e
+		print ("Service call failed: %s"%e)
 		return None	
 
 	#use service to switch to torque control	
@@ -192,7 +192,7 @@ def publishForceCmd(force_cmds, duration_sec, prefix):
 		switchTorquemode = rospy.ServiceProxy(service_address, SetTorqueControlMode)
 		switchTorquemode(1)           
 	except rospy.ServiceException, e:
-		print "Service call failed: %s"%e
+		print ("Service call failed: %s"%e)
 		return None	
 
 	#publish joint torque commands
@@ -220,7 +220,7 @@ def publishForceCmd(force_cmds, duration_sec, prefix):
 		switchTorquemode(0)
 		return None
 	except rospy.ServiceException, e:
-		print "Service call failed: %s"%e
+		print ("Service call failed: %s"%e)
 		return None
 
 
@@ -233,7 +233,7 @@ def publishTorqueCmd(jointCmds, duration_sec, prefix):
 	  setTorqueParameters = rospy.ServiceProxy(service_address, SetTorqueControlParameters)
 	  setTorqueParameters()           
   except rospy.ServiceException, e:
-	  print "Service call failed: %s"%e
+		print ("Service call failed: %s"%e)
 	  return None	
 
   #use service to switch to torque control	
@@ -243,7 +243,7 @@ def publishTorqueCmd(jointCmds, duration_sec, prefix):
 	  switchTorquemode = rospy.ServiceProxy(service_address, SetTorqueControlMode)
 	  switchTorquemode(1)           
   except rospy.ServiceException, e:
-	  print "Service call failed: %s"%e
+		print ("Service call failed: %s"%e)
 	  return None	
 
   #subscriber to get feedback    
@@ -273,14 +273,14 @@ def publishTorqueCmd(jointCmds, duration_sec, prefix):
 	  rate.sleep()
 	  if L: break
   sub.unregister()
-  print "max error %f %f %f %f %f %f %f" %(max_error[0], max_error[1], max_error[2], max_error[3], max_error[4], max_error[5], max_error[6])
+  print ("max error %f %f %f %f %f %f %f" %(max_error[0], max_error[1], max_error[2], max_error[3], max_error[4], max_error[5], max_error[6]))
 
   #use service to switch to position control	
   try:           
 	  switchTorquemode(0)
 	  return None
   except rospy.ServiceException, e:
-	  print "Service call failed: %s"%e
+		print ("Service call failed: %s"%e)
 	  return None
 
 
@@ -288,7 +288,7 @@ def ZeroTorque(prefix):
 	#move robot to candle like pose
 	#result = joint_position_client([180]*7)
 
-	print "torque before setting zero"
+	print ("torque before setting zero")
 	topic_name = '/' + prefix + 'driver/out/joint_torques'
 	sub_once = rospy.Subscriber(topic_name, kinova_msgs.msg.JointAngles, printTorqueVaules) 
 	rospy.wait_for_message(topic_name, kinova_msgs.msg.JointAngles, timeout=2)
@@ -301,20 +301,20 @@ def ZeroTorque(prefix):
 		zeroTorques = rospy.ServiceProxy(service_address, ZeroTorques)
 		zeroTorques()           
 	except rospy.ServiceException, e:
-		print "Service call failed: %s"%e
+		print ("Service call failed: %s"%e)
 		return None	
 	
 	rospy.sleep(0.5)
-	print "torque after setting zero"
+	print ("torque after setting zero")
 	sub_once = rospy.Subscriber(topic_name, kinova_msgs.msg.JointAngles, printTorqueVaules) 
 	rospy.wait_for_message(topic_name, kinova_msgs.msg.JointAngles, timeout=2)
 	sub_once.unregister()
 
 
 def printTorqueVaules(torques):
-	print "Torque - {}, {}, {}, {}, {}, {}, {}".format(torques.joint1, 
+	print ("Torque - {}, {}, {}, {}, {}, {}, {}".format(torques.joint1, 
 	torques.joint2, torques.joint3, torques.joint4, 
-	torques.joint5, torques.joint6, torques.joint7)
+	torques.joint5, torques.joint6, torques.joint7))
 
 
 def input_thread(L):

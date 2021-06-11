@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 """A test program to test action servers for the JACO and MICO arms."""
 
 import roslib; roslib.load_manifest('kinova_demo')
@@ -42,4 +42,4 @@ if __name__ == '__main__':
 
 		print("Done!")
 	except rospy.ROSInterruptException:
-		print "program interrupted before completion"
+		print ("program interrupted before completion")

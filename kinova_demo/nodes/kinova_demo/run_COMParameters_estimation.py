@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 """A test program to test action servers for the JACO and MICO arms."""
 
 import roslib; roslib.load_manifest('kinova_demo')
@@ -53,7 +53,7 @@ def ZeroTorque():
 	#move robot to candle like pose
 	#result = joint_position_client([180]*7)
 
-	print "torque before setting zero"
+	print ("torque before setting zero")
 	topic_name = '/' + prefix + 'driver/out/joint_torques'
 	sub_once = rospy.Subscriber(topic_name, kinova_msgs.msg.JointAngles, printTorqueVaules) 
 	rospy.wait_for_message(topic_name, kinova_msgs.msg.JointAngles, timeout=2)
