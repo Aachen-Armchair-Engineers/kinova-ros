@@ -3,6 +3,7 @@
 - Ported to noetic (untested)
 
 Planned:
+- Add requirements list
 - Replace the backend functionality with that of [libkindrv](https://github.com/fawkesrobotics/libkindrv) or a fork of it
 - Port to ROS2
 
