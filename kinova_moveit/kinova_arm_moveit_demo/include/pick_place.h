@@ -48,8 +48,8 @@ namespace kinova
 
         moveit::planning_interface::MoveGroupInterface* group_;
         moveit::planning_interface::MoveGroupInterface* gripper_group_;
-        robot_model::RobotModelPtr robot_model_;
-//        robot_state::RobotStatePtr robot_state_;
+        moveit::core::RobotModelPtr robot_model_;
+//        moveit::core::RobotStatePtr robot_state_;
 
         planning_scene::PlanningScenePtr planning_scene_;
         planning_scene_monitor::PlanningSceneMonitorPtr planning_scene_monitor_;

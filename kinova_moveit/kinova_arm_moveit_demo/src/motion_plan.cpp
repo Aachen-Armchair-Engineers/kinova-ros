@@ -136,11 +136,11 @@ int main(int argc, char **argv)
   // Note that this will only work if the current state already 
   // satisfies the path constraints. So, we need to set the start
   // state to a new pose. 
-  robot_state::RobotState start_state(*group.getCurrentState());
+  moveit::core::RobotState start_state(*group.getCurrentState());
   geometry_msgs::Pose start_pose2; // start from Home pose of j2n6
   tf::poseTFToMsg(Home, start_pose2);
 
-  const robot_state::JointModelGroup *joint_model_group =
+  const moveit::core::JointModelGroup *joint_model_group =
                   start_state.getJointModelGroup(group.getName());
   start_state.setFromIK(joint_model_group, start_pose2);
   group.setStartState(start_state);

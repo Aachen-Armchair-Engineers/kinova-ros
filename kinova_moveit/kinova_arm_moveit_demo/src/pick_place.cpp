@@ -54,8 +54,8 @@ PickPlace::PickPlace(ros::NodeHandle &nh):
     planning_scene_monitor_.reset(new planning_scene_monitor::PlanningSceneMonitor("robot_description"));
 
 //    //  every time need retrive current robot state, do the following.
-//    robot_state::RobotState& robot_state = planning_scene_->getCurrentStateNonConst();
-//    const robot_state::JointModelGroup *joint_model_group = robot_state.getJointModelGroup("arm");
+//    moveit::core::RobotState& robot_state = planning_scene_->getCurrentStateNonConst();
+//    const moveit::core::JointModelGroup *joint_model_group = robot_state.getJointModelGroup("arm");
 
     group_ = new moveit::planning_interface::MoveGroupInterface("arm");
     gripper_group_ = new moveit::planning_interface::MoveGroupInterface("gripper");
@@ -394,7 +394,7 @@ void PickPlace::check_collision()
 
     // allowed collision matrix
     collision_detection::AllowedCollisionMatrix acm = planning_scene_->getAllowedCollisionMatrix();
-    robot_state::RobotState copied_state = planning_scene_->getCurrentState();
+    moveit::core::RobotState copied_state = planning_scene_->getCurrentState();
 
     collision_detection::CollisionResult::ContactMap::const_iterator it2;
     for(it2 = collision_result.contacts.begin();
