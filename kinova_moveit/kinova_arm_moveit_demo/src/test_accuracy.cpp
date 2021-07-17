@@ -724,7 +724,7 @@ void PickPlace::evaluate_move_accuracy()
         current_state.setJointPositions(joint_names_[i].c_str(), &(msg->position[i]) );
     }
     current_state.update();
-    Eigen::Affine3d transform = current_state.getGlobalLinkTransform (robot_type_ + "_end_effector");
+    Eigen::Isometry3d transform = current_state.getGlobalLinkTransform (robot_type_ + "_end_effector");
     geometry_msgs::Pose feeback_pose;
     tf::poseEigenToMsg(transform,feeback_pose);
 
