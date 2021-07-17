@@ -1,11 +1,26 @@
+# !!!
+Apparently kinova decided to port the package to ros noetic themselves: https://github.com/Kinovarobotics/kinova-ros/tree/noetic-devel
+
 
 # Changes in this Fork:
-- Ported to noetic (untested)
+- Ported mostly to noetic (untested)
+
+WIP:
+- Port MoveIt completly to melodic and noetic (https://github.com/ros-planning/moveit/blob/noetic-devel/MIGRATION.md)
+  - KinematicsBase: Deprecated initialize(robot_description, ...) in favour of initialize(robot_model, ...). Adapt your kinematics plugin to directly receive a RobotModel. See the KDL plugin for an example.
+  - Extended the return value of MoveitCommander.MoveGroup.plan() from trajectory to a tuple of (success, trajectory, planning_time, error_code) to better match the C++ MoveGroupInterface (790)
 
 Planned:
+- fix roslint and catkin_lint errors and warnings
 - Add requirements list
-- Replace the backend functionality with that of [libkindrv](https://github.com/fawkesrobotics/libkindrv) or a fork of it
+- Replace the backend functionality (optionally?) with that of [libkindrv](https://github.com/fawkesrobotics/libkindrv) or a fork of it, thereby making it completly open source and portable to e.g. raspberries
 - Port to ROS2
+
+Other useful links:
+ - differrent kinova driver binaries:
+  - [Raspberry Pi 3](https://github.com/Kinovarobotics/kinova_sdk_recompiled) 
+  -
+  -
 
 =======
 # Table of Contents 
