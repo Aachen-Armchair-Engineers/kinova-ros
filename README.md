@@ -19,8 +19,7 @@ Planned:
 Other useful links:
  - differrent kinova driver binaries:
   - [Raspberry Pi 3](https://github.com/Kinovarobotics/kinova_sdk_recompiled) 
-  -
-  -
+  - [NVidia Jetson Tx2](https://github.com/Kinovarobotics/Extra_code_examples_Jaco2arm/tree/master/sdk%20compiled%20for%20tx2)
 
 =======
 # Table of Contents 
